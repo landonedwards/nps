@@ -136,10 +136,13 @@ a:hover {
 .site-title {
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
+
 .site-title > span {
   font-size: 1rem;
   margin-left: 0.3em;
+  color: white;
 }
 
 .logo {
@@ -170,4 +173,31 @@ a:hover {
 svg {
   background-color: var(--bs-black);
   fill: white;
+  width: 31px;
+}
+
+.global-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bs-black);
+  height: 100px;
+}
+
+.global-header__right {
+  display: flex;
+}
+
+.global-nav {
+  /*This is temporary. Menu does not currently work, so this will be hidden for now. */
+  display: none;
+}
+
+#global-nav-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: white;
+  background-color: var(--bs-black);
 }
