@@ -174,9 +174,9 @@ a:hover {
 }
 
 svg {
-  background-color: var(--bs-black);
+  /* background-color: var(--bs-black); */
   fill: white;
-  width: 31px;
+  width: 25px;
   max-height: 75px;
 }
 
@@ -217,27 +217,56 @@ svg {
   position: relative;
 }
 
+.park-hero-img {
+  width: 100%;
+}
+
 .park-info {
   display: flex;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.76);
   color: white;
   font-size: 15px;
   width: 100%;
   position: absolute;
-  bottom: 5px;
+  bottom: 4px;
 }
 
 .park-name {
   font-size: 32px;
+  font-weight: bold;
   margin: 15px 25px 15px 15px;
   padding: 10px 5px 10px 5px;
+  text-decoration: none;
 }
 
-.park-location p:first-child {
-  margin-bottom: -10px;
+.park-name span {
+  color: white;
+}
+
+.park-location {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .options-header {
   background-color: var(--bs-black);
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: -5px;
+}
+
+.option-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.option-block span {
+  color: white;
+  z-index: 10;
+  margin: 15px 0px -15px 0px;
 }
