@@ -1,25 +1,24 @@
-import { getParkData } from "./parkService.mjs";
+import { getParkData, parkInfoLinks } from "./parkService.mjs";
+import { introTemplate, mediaCardTemplate } from "./templates.mjs";
+import setHeaderFooter from "./setHeaderFooter.mjs";
 
 const parkData = getParkData();
 
-const disclaimer = document.querySelector(".disclaimer > a");
-disclaimer.href = parkData.url;
-disclaimer.innerHTML = parkData.fullName;
+function setParkIntro(data) {
+  const introSection = document.querySelector(".intro");
+  const parkIntro = introTemplate(data);
 
-const title = document.querySelector("title");
-title.innerHTML = parkData.fullName;
-
-const heroImage = document.querySelector(".park-hero-img");
-heroImage.src = parkData.images[0].url;
-
-function parkInfoTemplate(info) {
-    return `
-    <a href="/" class="park-name"><span>${info.name}</span></a>
-    <p class="park-location">
-      <span>${info.designation}</span>
-      <span>${info.states}</span>
-    </p>`;
+  introSection.insertAdjacentHTML("afterbegin", parkIntro);
 }
 
-const parkDetails = document.querySelector(".park-info");
-parkDetails.innerHTML = parkInfoTemplate(parkData);
+function setParkInfoLinks(data) {
+  const infoSection = document.querySelector(".info");
+  // using the parkInfoLinks array, convert each object into html strings with the mediaCardTemplate function
+  let html = data.map(mediaCardTemplate);
+  // join the elements of the html array and insert it into the intro section
+  infoSection.insertAdjacentHTML("afterbegin", html.join(""));
+}
+
+setHeaderFooter(parkData);
+setParkIntro(parkData);
+setParkInfoLinks(parkInfoLinks);
