@@ -179,7 +179,7 @@ const park = {
   designation: "National Park"
 };
 
-export const parkInfoLinks = [
+const parkInfoLinks = [
   {
     name: "Current Conditions &#x203A;",
     link: "conditions.html",
@@ -201,6 +201,42 @@ export const parkInfoLinks = [
   }
 ];
 
-export function getParkData() {
-  return park;
+export function getInfoLinks(data) {
+  const withUpdatedImages = parkInfoLinks.map((item, index) => {
+    item.image = data[index + 2].url;
+    return item;
+  });
+
+  return withUpdatedImages;
+}
+
+const baseURL = "https://developer.nps.gov/api/v1/";
+const apiKey = import.meta.env.VITE_NPS_API_KEY;
+
+async function getJson(url) {
+  const options = {
+    method: "GET",
+    headers: {
+      "X-Api-Key": apiKey
+    }
+  };
+
+  let data = {};
+  const response = await fetch(baseURL + url, options);
+
+  if (response.ok) {
+    data = await response.json();
+  } else throw new Error("response not ok");
+
+  return data;
+}
+
+export async function getVisitorCenterData() {
+  const visitorCenterInfo = await getJson("visitorcenters" + "?parkCode=yell");
+  return visitorCenterInfo.data[0];
+}
+
+export async function getParkData() {
+  const parkData = await getJson("parks?parkCode=yell");
+  return parkData.data[0];
 }

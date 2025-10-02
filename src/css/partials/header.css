@@ -1,0 +1,98 @@
+/* Title and logo styling */
+
+.site-title {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.site-title > span {
+  font-size: 1rem;
+  margin-left: 0.3em;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.logo {
+  height: 0;
+  width: 0;
+  margin: 0.5em;
+  display: inline-block;
+  /* This was 34px wide */
+  border-top: 39px solid var(--bs-light-green);
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+}
+
+.global-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bs-black);
+  height: 80px;
+}
+
+.global-header__right {
+  display: flex;
+  gap: 15px;
+}
+
+.global-nav {
+  /*This is temporary. Menu does not currently work, so this will be hidden for now. */
+  display: none;
+}
+
+#global-nav-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: white;
+  background-color: var(--bs-black);
+  padding: 0px 20px 0px 20px;
+}
+
+#park-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.park-hero-info {
+  position: relative;
+}
+
+.park-hero-img {
+  object-fit: cover;
+  height: 450px;
+  width: 100%;
+}
+
+.options-header {
+  background-color: var(--bs-black);
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: -5px;
+}
+
+.option-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.option-block span {
+  color: white;
+  z-index: 10;
+  margin: 15px 0px -15px 0px;
+}
+
+svg {
+  /* background-color: var(--bs-black); */
+  fill: white;
+  width: 25px;
+  max-height: 75px;
+}
+

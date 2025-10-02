@@ -1,0 +1,42 @@
+/* Skip links styling */
+.skip-links ul {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.skip-links a {
+  font-size: 11px;
+  font-size: 0.6875rem;
+  position: absolute;
+  right: 20px;
+  top: -200px;
+  z-index: -1;
+}
+
+.skip-links a:focus {
+  top: 2px;
+  z-index: 9999;
+}
+
+/* media card styling */
+
+.media-card {
+  width: 90%;
+}
+
+@media (min-width: 700px) {
+  .media-card {
+    width: 31%;
+  }
+}
+
+.media-card a {
+  text-decoration: none;
+  color: black;
+}
+
+.media-card p {
+  color: darkslategray;
+  font-size: 0.8em;
+}
