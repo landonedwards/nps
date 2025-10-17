@@ -1,0 +1,48 @@
+.alerts ul {
+  list-style: none;
+  padding: 0;
+}
+
+.alert {
+  margin: 0.5rem;
+  padding: 0.5rem 0 0.8rem 0;
+  display: flex;
+  gap: 1em;
+  border-bottom: 1px solid var(--bs-grey-3);
+}
+
+.alert h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.alert p {
+  margin: 0;
+}
+
+.alert svg {
+  height: 30px;
+  width: 30px;
+  margin: 0.25em;
+  flex: 0 0 auto;
+}
+
+.visitor-services details, .activities details {
+  border: 1px solid lightgray;
+  padding: 1rem;
+  margin: 0.8rem;
+  border-radius: 5px;
+}
+
+.visitor-services ul {
+  padding: 0;
+}
+
+.centerDirections {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--bs-grey-3);
+}
+
+.activity-item p {
+  margin: 1px;
+}

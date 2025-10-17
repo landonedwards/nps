@@ -68,6 +68,35 @@
   width: 100%;
 }
 
+.park-info {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.76);
+  color: white;
+  font-size: 15px;
+  width: 100%;
+  position: absolute;
+  bottom: 4px;
+}
+
+.park-name {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 15px 25px 15px 15px;
+  padding: 10px 5px 10px 5px;
+  text-decoration: none;
+}
+
+.park-name span {
+  color: white;
+}
+
+.park-location {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .options-header {
   background-color: var(--bs-black);
   display: flex;
