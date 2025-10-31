@@ -26,21 +26,63 @@
 }
 
 .global-header {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 200px;
   justify-content: space-between;
   align-items: center;
   background-color: var(--bs-black);
-  height: 80px;
+  min-height: 80px;
 }
 
 .global-header__right {
   display: flex;
   gap: 15px;
+  justify-content: flex-end;
 }
 
 .global-nav {
-  /*This is temporary. Menu does not currently work, so this will be hidden for now. */
+  width: 100%;
+  grid-column: 1/3;
+  border-top: 1px solid #333;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s;
+  background-color: var(--bs-black);
+  color: white;
+}
+
+.global-nav button {
+  background-color: transparent;
+  border: 0;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.global-nav svg {
+  --icon-color: white;
+}
+
+.global-nav__toggle--closed {
+  display: flex;
+  align-items: center;
+}
+
+.global-nav__toggle--open {
   display: none;
+  align-items: center;
+}
+
+.global-nav__split-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.global-nav__split-button a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1em;
+  margin-left: 5px;
 }
 
 #global-nav-toggle {
@@ -51,6 +93,18 @@
   color: white;
   background-color: var(--bs-black);
   padding: 0px 20px 0px 20px;
+}
+
+.global-nav__toggle[aria-expanded="true"] > .global-nav__toggle--closed {
+  display: none;
+}
+
+.global-nav__toggle[aria-expanded="true"] > .global-nav__toggle--open {
+  display: flex;
+}
+
+.global-nav.show-menu {
+  max-height: 1000px;
 }
 
 #park-header {
