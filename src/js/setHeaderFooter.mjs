@@ -1,26 +1,5 @@
 import { parkInfoTemplate, footerTemplate } from "./templates.mjs";
-
-// sets up menu dropdown for all pages
-function enableNavigation() {
-  const menuButton = document.querySelector("#global-nav-toggle");
-  const globalNav = document.querySelector(".global-nav");
-
-  menuButton.addEventListener("click", (event) => {
-    let target = event.target;
-
-    if (target.tagName != "BUTTON") {
-      target = target.closest("button");
-    }
-
-    globalNav.classList.toggle("show-menu");
-
-    if (globalNav.classList.contains("show-menu")) {
-      target.setAttribute("aria-expanded", true);
-    } else {
-      target.setAttribute("aria-expanded", false);
-    }
-  });
-}
+import enableNavigation from "./navigation.mjs";
 
 function setHeaderInfo(data) {
   const disclaimer = document.querySelector(".disclaimer > a");
