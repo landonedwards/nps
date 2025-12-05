@@ -245,3 +245,8 @@ export async function getParkData() {
   const parkData = await getJson("parks?parkCode=yell");
   return parkData.data[0];
 }
+
+export async function getParkVisitorCenterDetails(id) {
+  const parkData = await getJson(`visitorcenters?id=${id}`);
+  return parkData.data[0];
+}

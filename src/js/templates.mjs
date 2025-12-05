@@ -50,11 +50,81 @@ export function alertTemplate(alert) {
 }
 
 export function visitorCenterTemplate(visitorCenter) {
-  return `
-  <h4>${visitorCenter.name}</h4>
+  return `<li class="visitor-center">
+  <h4><a href="visitor-center.html?id=${visitorCenter.id}">${visitorCenter.name}</a></h4>
   <p>${visitorCenter.description}</p>
   <p class="centerDirections">${visitorCenter.directionsInfo}</p>
-  `;
+  </li>`;
+}
+
+export function vcTitleTemplate(data) {
+  return `${iconTemplate("ranger-station")} ${data}`;
+}
+
+export function vcInfoTemplate(data) {
+  const image = data.images[0];
+  return `<figure>
+            <img src="${image.url}" alt="${image.altText}" />
+            <figcaption>${image.caption} <span>${image.credit}</span></figcaption>
+          </figure>
+          <p>${data.description}</p>`;
+}
+
+export function listTemplate(data, contentTemplate) {
+  const html = data.map(contentTemplate);
+  return `<ul>${html.join("")}</ul>`;
+}
+
+export function vcAddressTemplate(data) {
+  return `<section>
+            <h3>${data.type} Address</h3>
+            <address>
+              ${data.line1}<br />
+              ${data.city}, ${data.stateCode} ${data.postalCode}
+            </address>
+          </section>`;
+}
+
+export function vcAddressListTemplate(data) {
+  const physical = data.find(address => address.type === "Physical");
+  const mailing = data.find(address => address.type === "Mailing");
+  let html = vcAddressTemplate(physical);
+  if (mailing) {
+    html += vcAddressTemplate(mailing);
+  }
+
+  return html;
+}
+
+export function vcDirectionsTemplate(data) {
+  return `<p>${data}</p>`;
+}
+
+export function vcContactsTemplate(data) {
+  // check if there are any available emails for this visitor center. If not, store a message indicating that (ensures the section always displays)
+  const emailValue = data.emailAddresses && data.emailAddresses.length > 0 ? 
+    `<a href="email:${data.emailAddresses[0].emailAddress}">Send this visitor center an email</a>` : "None available.";
+
+  // stores all available numbers for the visitor center, or a message indicating there are none
+  const phoneNumberValue = data.phoneNumbers && data.phoneNumbers.length > 0 ? 
+    `<a href="tel:+1${data.phoneNumbers[0].phoneNumber}">${data.phoneNumbers[0].phoneNumber}</a>` : "None available.";
+
+  return `<section class="vc-contact__email">
+            <h3>Email Address</h3>
+            ${emailValue}
+          </section>
+          <section class="vc-contact__phone">
+            <h3>Phone numbers</h3>
+            ${phoneNumberValue}
+          </section>`;
+}
+
+export function vcImageTemplate(data) {
+  return `<li><img src="${data.url}" alt="${data.altText}"</li>`;
+}
+
+export function vcAmenityTemplate(data) {
+  return `<li>${data}</li>`;
 }
 
 export function activitiesTemplate(activity) {
@@ -63,6 +133,24 @@ export function activitiesTemplate(activity) {
     <p>${activity.name}</p>
   </li>
   `;
+}
+
+export function iconTemplate(iconId) {
+  return `<svg class="icon" role="presentation" focusable="false">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/images/sprite.symbol.svg#${iconId}"></use>
+          </svg>`;
+}
+
+export function vcDetailsTemplate(elementId, summaryText, iconId, content) {
+  return `<details name="vc-details" id="${elementId}">
+            <summary>
+              ${iconTemplate(iconId)}
+              ${summaryText}
+            </summary>
+            <div class="details-content">
+              ${content}
+            </div>
+          </details>`;
 }
 
 function getMailingAddress(addresses) {
